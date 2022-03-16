@@ -7,10 +7,10 @@ pipeline {
     }
 
     stages {
-        tools {
-            'hudson.plugins.sonar.SonarRunnerInstallation' 'SonarScanner'
-        }
         stage('Run') {
+            tools {
+                'hudson.plugins.sonar.SonarRunnerInstallation' 'SonarScanner'
+            }
             environment { 
                 HOME = "${WORKSPACE}"
             }
