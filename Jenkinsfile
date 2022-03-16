@@ -18,7 +18,7 @@ pipeline {
                 sh 'python3 -m flask run --host=0.0.0.0 &'
                 sh 'ls'
                 withSonarQubeEnv('sonar') {
-                    sonar-scanner
+                    //sonar-scanner
                 }
             }
         }
