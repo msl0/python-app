@@ -5,11 +5,10 @@ pipeline {
             label 'node01'
         }
     }
-
     stages {
           stage('SonarQube Analysis') {
             def scannerHome = tool 'SonarScanner';
-            withSonarQubeEnv() {
+            withSonarQubeEnv('sonar') {
               sh "${scannerHome}/bin/sonar-scanner"
             }
           }
@@ -18,18 +17,8 @@ pipeline {
                 HOME = "${WORKSPACE}"
             }
             steps {
-                sh 'pwd'
                 sh 'pip install -r requirements.txt'
                 sh 'python3 -m flask run --host=0.0.0.0 &'
-                sh 'ls'
-                sh 'printenv'
-                withSonarQubeEnv('sonar') {
-                    sh 'printenv'
-                    sh 'ls'
-                    sh 'pwd'
-                    sh "ls ${scannerHome}"
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }
             }
         }
         stage('Test') {
