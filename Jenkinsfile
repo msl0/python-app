@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'pip install -r requirements.txt'
                 sh 'python3 -m flask run --host=0.0.0.0 &'
-                sh 'wget $(hostname):5000'
+                sh 'wget -O - $(hostname):5000'
             }
         }
     }
