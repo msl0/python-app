@@ -7,9 +7,13 @@ pipeline {
     }
     stages {
         stage('SonarQube Analysis') {
-            agent { docker 'docker pull sonarsource/sonar-scanner-cli:latest' }
+            agent {
+                docker {
+                    image 'docker pull sonarsource/sonar-scanner-cli:latest'
+                }
+            }
             steps {
-              //sh 'pip install -r requirements.txt'
+              sh 'pip install -r requirements.txt'
               script {
                 def scannerHome = tool 'SonarScanner';
                 withSonarQubeEnv('sonar') {
