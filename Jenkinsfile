@@ -5,10 +5,11 @@ pipeline {
             label 'node01'
         }
     }
-    tools {
-        'hudson.plugins.sonar.SonarRunnerInstallation' 'SonarScanner'
-    }
+
     stages {
+        tools {
+            'hudson.plugins.sonar.SonarRunnerInstallation' 'SonarScanner'
+        }
         stage('Run') {
             environment { 
                 HOME = "${WORKSPACE}"
@@ -18,7 +19,7 @@ pipeline {
                 sh 'python3 -m flask run --host=0.0.0.0 &'
                 sh 'ls'
                 withSonarQubeEnv('sonar') {
-                    //sonar-scanner
+                    
                 }
             }
         }
