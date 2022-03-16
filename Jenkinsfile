@@ -13,6 +13,7 @@ pipeline {
             }
             environment { 
                 HOME = "${WORKSPACE}"
+                scannerHome = tool 'SonarScanner'
             }
             steps {
                 sh 'pwd'
@@ -24,6 +25,7 @@ pipeline {
                     sh 'printenv'
                     sh 'ls'
                     sh 'pwd'
+                    sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
