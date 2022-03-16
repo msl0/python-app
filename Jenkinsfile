@@ -1,10 +1,4 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9-alpine'
-            label 'node01'
-        }
-    }
     stages {
         stage('SonarQube Analysis') {
             agent {
@@ -23,6 +17,12 @@ pipeline {
             }
         }
         stage('Run') {
+            agent {
+                docker {
+                    image 'python:3.9-alpine'
+                    label 'node01'
+                }
+            }
             environment { 
                 HOME = "${WORKSPACE}"
             }
@@ -32,6 +32,12 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                docker {
+                    image 'python:3.9-alpine'
+                    label 'node01'
+                }
+            }
             steps {
                 sh 'wget -O- $(hostname):5000'
             }
