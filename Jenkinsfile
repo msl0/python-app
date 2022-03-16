@@ -16,5 +16,10 @@ pipeline {
                 sh 'wget -O- $(hostname):5000'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'wget -O- $(hostname):5000'
+            }
+        }
     }
 }
