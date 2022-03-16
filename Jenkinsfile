@@ -15,6 +15,7 @@ pipeline {
                 HOME = "${WORKSPACE}"
             }
             steps {
+                sh 'pwd'
                 sh 'pip install -r requirements.txt'
                 sh 'python3 -m flask run --host=0.0.0.0 &'
                 sh 'ls'
@@ -22,6 +23,7 @@ pipeline {
                 withSonarQubeEnv('sonar') {
                     sh 'printenv'
                     sh 'ls'
+                    sh 'pwd'
                 }
             }
         }
