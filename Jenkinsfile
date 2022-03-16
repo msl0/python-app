@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Run') {
             environment { 
-                HOME = ${env.WORKSPACE} 
+                HOME = ${WORKSPACE}
             }
             steps {
                 sh 'pip install -r requirements.txt'
