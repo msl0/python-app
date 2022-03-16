@@ -21,6 +21,7 @@ pipeline {
                 sh 'printenv'
                 withSonarQubeEnv('sonar') {
                     sh 'printenv'
+                    sh 'ls'
                 }
             }
         }
