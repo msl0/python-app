@@ -25,6 +25,7 @@ pipeline {
                     sh 'printenv'
                     sh 'ls'
                     sh 'pwd'
+                    sh "ls ${scannerHome}"
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
