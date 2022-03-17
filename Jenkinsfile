@@ -8,7 +8,6 @@ pipeline {
                 }
             }
             steps {
-              sh 'pip install -r requirements.txt'
               script {
                 def scannerHome = tool 'SonarScanner';
                 withSonarQubeEnv('sonar') {
