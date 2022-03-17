@@ -12,7 +12,9 @@ pipeline {
               script {
                 def scannerHome = tool 'SonarScanner';
                 withSonarQubeEnv('sonar') {
-                  sh "${scannerHome}/bin/sonar-scanner"
+                  sh 'ls'
+                  sh 'pwd'
+                  sh 'printenv'
                 }
               }
             }
