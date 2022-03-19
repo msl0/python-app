@@ -1,17 +1,24 @@
 pipeline {
-    environment {
-        registry = "user/repo"
-        registryCredential = 'dockerhub_id'
-        dockerImage = ''
+  agent {
+    node {
+      label 'node01'
     }
-    agent any
-    stages {
-        stage('Building our image') {
-            steps{
-                script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                }
-            }
+
+  }
+  stages {
+    stage('Building our image') {
+      steps {
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
+
+      }
     }
+
+  }
+  environment {
+    registry = 'user/repo'
+    registryCredential = 'dockerhub_id'
+    dockerImage = ''
+  }
 }
